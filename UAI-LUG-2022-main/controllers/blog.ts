@@ -17,7 +17,7 @@ export const blogController = {
 
   delete: async (request:Request, response:Response) => {
     try {
-      await blogModel.findOneAndDelete({title: request.params.title});
+      await blogModel.findByIdAndDelete(request.params.id);
       response.status(200).send("Todo O.K");
     } catch (error) {
       
@@ -29,8 +29,8 @@ export const blogController = {
   get: async (request:Request, response:Response) => {
     try {
       let answer;
-      if (request.params.title) {
-        answer = await blogModel.find({title: request.params.title});
+      if (request.params.id) {
+        answer = await blogModel.findById(request.params.id);
       }else{
         answer = await blogModel.find();
       }
@@ -44,7 +44,7 @@ export const blogController = {
 
   put: async (request:Request, response:Response) => {
     try {
-      await blogModel.findOneAndUpdate({title: request.params.title}, {...request.body});
+      await blogModel.findByIdAndUpdate(request.params.id, {...request.body});
       response.status(200).send("Todo O.K");
     } catch (error) {
       console.log(`Ha ocurrido un error`);

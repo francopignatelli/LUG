@@ -6,13 +6,13 @@ const router = Router();
 // en este caso la url deberia ser --> localhost:PORT/api/blogs/ con un metodo GET.
 router.get("/", blogController.get);
 
-router.get("/:title", blogController.get);
+router.get("/:id", blogController.get);
 
 router.post("/", blogController.post) //Paso funcion como objeto
 // se exporta el router para poder enlazarlo con las rutas que estan dentro de /api.
 
-router.put("/:title", blogController.put);
+router.put("/:id", blogController.put);
 
-router.delete("/:title", blogController.delete);
+router.delete("/:id", blogController.delete);
 
 export default router;
